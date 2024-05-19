@@ -45,20 +45,17 @@ class FOO:
                     the_biggest_component = region.area
 
         average = (total_area/counter)
-        print("the_biggest_component: " + str(the_biggest_component))
-        print("average: " + str(average))
+
 
         # experimental-based ratio calculation, modify it for your cases
         # a4_small_size_outliar_constant is used as a threshold value to remove connected outliar connected pixels
         # are smaller than a4_small_size_outliar_constant for A4 size scanned documents
         a4_small_size_outliar_constant = ((average/constant_parameter_1)*constant_parameter_2)+constant_parameter_3
-        print("a4_small_size_outliar_constant: " + str(a4_small_size_outliar_constant))
 
         # experimental-based ratio calculation, modify it for your cases
         # a4_big_size_outliar_constant is used as a threshold value to remove outliar connected pixels
         # are bigger than a4_big_size_outliar_constant for A4 size scanned documents
         a4_big_size_outliar_constant = a4_small_size_outliar_constant*constant_parameter_4
-        print("a4_big_size_outliar_constant: " + str(a4_big_size_outliar_constant))
 
         # remove the connected pixels are smaller than a4_small_size_outliar_constant
         pre_version = morphology.remove_small_objects(blobs_labels, a4_small_size_outliar_constant)
