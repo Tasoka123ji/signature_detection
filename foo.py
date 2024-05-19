@@ -77,6 +77,3 @@ class FOO:
         cv2.imwrite("./uploads/output.png", img)
 
 
-foo = FOO('/home/karen/Public/document/in1.jpg')
-
-foo.signature()
