@@ -22,10 +22,12 @@ def upload_file():
     if request.method == 'POST': 
         file = request.files['file']
         if file and allowed_file(file.filename):
-            foo = FOO(file.filename)
+
+            filename = secure_filename('//home//karen/Public//document//outputs//output.png')
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            filename = './uploads/' + filename
+            foo = FOO(filename)
             foo.signature()
-            # filename = secure_filename('//home//karen/Public//document//outputs//output.png')
-            # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # print(filename + '          ---------------------------------------------------------------------------------')
             return redirect(url_for('uploaded_file', filename='output.png'))
         
